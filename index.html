@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Chess accuracy by ecrucru</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"></script>
+	<script src="chess-accuracy.js"></script>
+	<style>
+		INPUT[type=number] {
+			width: 60px;
+		}
+		#chess_input {
+			width: 100%;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Chess accuracy</h1>
+
+	<p>Paste a single PGN :</p>
+	<textarea id="chess_input" onfocus="this.select()">
+[SetUp "1"]
+[FEN "rnbqkbnr/pp3ppp/4p3/2pp4/2PP4/2N5/PP2PPPP/R1BQKBNR w KQkq - 0 4"]
+
+4. dxc5 Nf6 5. cxd5 exd5 6. Qd3 Bxc5 7. b4 Bxb4 8. Qe3+ Qe7 9. Qxe7+ Kxe7
+10. Bd2 Bf5 11. f4 Nc6 12. Rc1 d4 13. Nb5 Bxd2+ 14. Kxd2 Rhd8 15. e3 dxe3+
+16. Kxe3 Nd5+ 17. Kf3 a6 18. g4 Bxg4+ 19. Kxg4 axb5 20. Bxb5 Nd4 21. Re1+
+Kf8 22. a4 Nc3 23. Bd3 Rxa4 24. Bxh7 g6 25. Nf3 Kg7 26. Ng5 Rd7 27. h4 f6
+28. Bxg6 Kxg6 29. h5+ Kh6 30. Rh3 fxg5 31. fxg5+ Kg7 32. h6+ Kg6 33. Re8
+Ne6+ 34. Kg3 Rd3+ 35. Kh2 Rxh3+ 36. Kxh3 Nxg5+ 37. Kg2 Kxh6 38. Kh2 b5 39.
+Kh1 b4 40. Re5 b3 41. Rc5 Na2 42. Rc6+ Kh5 43. Rb6 Rb4 44. Rf6 b2 45. Rf1
+b1=Q 46. Rxb1 Rxb1+ 47. Kh2 Nf3+ 48. Kg3 Nd4 49. Kf2 Rb3 50. Ke1 Nb4 51.
+Kf1 Nd3 52. Kg1 Rb2 53. Kh1 Kg4 54. Kg1 Kf3 55. Kh1 Kg3 56. Kg1 Rb1#
+</textarea>
+	<p>
+		Depth :		<input id="chess_depth" type="number" value="18" min="1" max="32" />
+		<br/>Time :	<input id="chess_time" type="number" value="15" min="1" max="60" /> seconds
+		<br/>Side :	<select id="chess_side">
+						<option value="wb" selected>White &amp; Black</option>
+						<option value="w">White only</option>
+						<option value="b">Black only</option>
+					</select>
+	</p>
+	<p>
+		<input type="button" value="Calculate the accuracy" onclick="chess_accuracy()" />
+		<input type="button" value="STOP" onclick="chess_stop()" />
+	</p>
+
+	<p>
+		Progress = <span id="chess_progress">-</span>
+		<br/>White = <span id="chess_white">-</span>
+		<br/>Black = <span id="chess_black">-</span>
+	</p>
+
+
+	<hr/>
+	<p>Designed at <a href="https://github.com/ecrucru/chess-accuracy/">https://github.com/ecrucru/chess-accuracy/</a></p>
+</body>
+</html>
